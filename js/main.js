@@ -1,5 +1,4 @@
-
-$(document).ready(function () {
+$(document).ready(function() {
     "use strict";
 
     var window_width = $(window).width(),
@@ -8,9 +7,10 @@ $(document).ready(function () {
         header_height_static = $(".site-header.static").outerHeight(),
         fitscreen = window_height - header_height;
 
-
     $(".fullscreen").css("height", window_height)
     $(".fitscreen").css("height", fitscreen);
+
+    //------- Niceselect  js --------//  
 
     if (document.getElementById("default-select")) {
         $('select').niceSelect();
@@ -19,13 +19,14 @@ $(document).ready(function () {
         $('select').niceSelect();
     };
 
+    //------- Lightbox  js --------//  
+
     $('.img-gal').magnificPopup({
         type: 'image',
         gallery: {
             enabled: true
         }
     });
-
 
     $('.play-btn').magnificPopup({
         type: 'iframe',
@@ -35,18 +36,71 @@ $(document).ready(function () {
         fixedContentPos: false
     });
 
-    //  Tilt Js
-    $('.single-feature').tilt({
-        maxTilt: 9,
+    //------- Accordion  js --------//  
+
+    jQuery(document).ready(function($) {
+
+        if (document.getElementById("accordion")) {
+
+            var accordion_1 = new Accordion(document.getElementById("accordion"), {
+                collapsible: false,
+                slideDuration: 500
+            });
+        }
     });
 
-    $('.single-price').tilt({
-        maxTilt: 9,
-    });
+    //------- Circle Chart  js --------//  
 
+    if (document.getElementById("skills")) {
 
+        $('.skill-1').percentcircle({
+            animate: true,
+            diameter: 400,
+            guage: 5,
+            coverBg: '#fff',
+            bgColor: '#efefef',
+            fillColor: '#988fff',
+            percentSize: '24px',
+            percentWeight: 'normal'
+        });
 
-    // Initiate superfish on nav menu
+        $('.skill-2').percentcircle({
+            animate: true,
+            diameter: 400,
+            guage: 5,
+            coverBg: '#fff',
+            bgColor: '#efefef',
+            fillColor: '#988fff',
+            percentSize: '24px',
+            percentWeight: 'normal'
+        });
+
+        $('.skill-3').percentcircle({
+            animate: true,
+            diameter: 400,
+            guage: 5,
+            coverBg: '#fff',
+            bgColor: '#efefef',
+            fillColor: '#988fff',
+            percentSize: '24px',
+            percentWeight: 'normal'
+        });
+
+        $('.skill-4').percentcircle({
+            animate: true,
+            diameter: 400,
+            guage: 5,
+            coverBg: '#fff',
+            bgColor: '#efefef',
+            fillColor: '#988fff',
+            percentSize: '24px',
+            percentWeight: 'normal'
+        });
+
+    };
+
+    //------- Superfist nav menu  js --------//  
+
     $('.nav-menu').superfish({
         animation: {
             opacity: 'show'
@@ -54,7 +108,8 @@ $(document).ready(function () {
         speed: 400
     });
 
-    // Mobile Navigation
+    //------- Mobile Nav  js --------//  
+
     if ($('#nav-menu-container').length) {
         var $mobile_nav = $('#nav-menu-container').clone().prop({
             id: 'mobile-nav'
@@ -68,19 +123,19 @@ $(document).ready(function () {
         $('body').append('<div id="mobile-body-overly"></div>');
         $('#mobile-nav').find('.menu-has-children').prepend('<i class="lnr lnr-chevron-down"></i>');
 
-        $(document).on('click', '.menu-has-children i', function (e) {
+        $(document).on('click', '.menu-has-children i', function(e) {
             $(this).next().toggleClass('menu-item-active');
             $(this).nextAll('ul').eq(0).slideToggle();
             $(this).toggleClass("lnr-chevron-up lnr-chevron-down");
         });
 
-        $(document).on('click', '#mobile-nav-toggle', function (e) {
+        $(document).on('click', '#mobile-nav-toggle', function(e) {
             $('body').toggleClass('mobile-nav-active');
             $('#mobile-nav-toggle i').toggleClass('lnr-cross lnr-menu');
             $('#mobile-body-overly').toggle();
         });
 
-        $(document).click(function (e) {
+        $(document).click(function(e) {
             var container = $("#mobile-nav, #mobile-nav-toggle");
             if (!container.is(e.target) && container.has(e.target).length === 0) {
                 if ($('body').hasClass('mobile-nav-active')) {
@@ -94,8 +149,9 @@ $(document).ready(function () {
         $("#mobile-nav, #mobile-nav-toggle").hide();
     }
 
-    // Smooth scroll for the menu and links with .scrollto classes
-    $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function () {
+    //------- Smooth Scroll  js --------//  
+
+    $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
             if (target.length) {
@@ -128,14 +184,13 @@ $(document).ready(function () {
         }
     });
 
-
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         $('html, body').hide();
 
         if (window.location.hash) {
 
-            setTimeout(function () {
+            setTimeout(function() {
 
                 $('html, body').scrollTop(0).show();
 
@@ -147,9 +202,7 @@ $(document).ready(function () {
 
             }, 0);
 
-        }
-
-        else {
+        } else {
 
             $('html, body').show();
 
@@ -157,153 +210,19 @@ $(document).ready(function () {
 
     });
 
+    //------- Header Scroll Class  js --------//  
 
-    // Header scroll class
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 50) {
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
             $('#header').addClass('header-scrolled');
         } else {
             $('#header').removeClass('header-scrolled');
         }
     });
 
-    // Owl Carousel
-    if ($('.testi-slider').length) {
-        $('.testi-slider').owlCarousel({
-            loop: true,
-            margin: 30,
-            items: 1,
-            nav: false,
-            autoplay: 2500,
-            smartSpeed: 1500,
-            dots: true,
-            responsiveClass: true,
-            thumbs: true,
-            thumbsPrerendered: true,
-            navText: ["<i class='lnr lnr-arrow-left'></i>", "<i class='lnr lnr-arrow-right'></i>"]
-        })
-    }
+    //------- Owl Carusel  js --------//  
 
-    $('.active-realated-carusel').owlCarousel({
-        items: 1,
-        loop: true,
-        margin: 100,
-        dots: true,
-        nav: true,
-        navText: ["<span class='lnr lnr-arrow-up'></span>", "<span class='lnr lnr-arrow-down'></span>"],
-        autoplay: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 1,
-            },
-            768: {
-                items: 1,
-            }
-        }
-    });
-    if ($('.owl-screenshot').length) {
-        $('.owl-screenshot').owlCarousel({
-            loop: true,
-            margin: 30,
-            items: 4,
-            nav: false,
-            // autoplay: 2500,
-            smartSpeed: 1500,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 1,
-                    margin: 80
-                },
-                576: {
-                    items: 2
-                },
-                767: {
-                    items: 3
-                },
-                1199: {
-                    items: 4
-                }
-            }
-        })
-    }
-
-
-    $('.active-about-carusel').owlCarousel({
-        items: 1,
-        loop: true,
-        margin: 100,
-        nav: true,
-        navText: ["<span class='lnr lnr-arrow-up'></span>",
-            "<span class='lnr lnr-arrow-down'></span>"],
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 1,
-            },
-            768: {
-                items: 1,
-            }
-        }
-    });
-
-
-    $('.active-review-carusel').owlCarousel({
-        items: 1,
-        loop: true,
-        autoplay: true,
-        margin: 30,
-        dots: true
-    });
-
-    $('.active-info-carusel').owlCarousel({
-        items: 1,
-        loop: true,
-        margin: 100,
-        dots: true,
-        autoplay: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 1,
-            },
-            768: {
-                items: 1,
-            }
-        }
-    });
-
-
-    $('.active-testimonial').owlCarousel({
-        items: 2,
-        loop: true,
-        margin: 30,
-        dots: true,
-        autoplay: true,
-        nav: true,
-        navText: ["<span class='lnr lnr-arrow-up'></span>", "<span class='lnr lnr-arrow-down'></span>"],
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 1,
-            },
-            768: {
-                items: 2,
-            }
-        }
-    });
-
-
-    $('.active-testimonials-slider').owlCarousel({
+    $('.active-testimonial-carusel').owlCarousel({
         items: 3,
         loop: true,
         margin: 30,
@@ -319,71 +238,196 @@ $(document).ready(function () {
             768: {
                 items: 2,
             },
-            801: {
+            961: {
                 items: 3,
             }
         }
     });
 
-
-    $('.active-fixed-slider').owlCarousel({
-        items: 3,
+    $('.active-brand-carusel').owlCarousel({
+        items: 5,
         loop: true,
-        dots: true,
-        nav: true,
-        navText: ["<span class='lnr lnr-arrow-up'></span>",
-            "<span class='lnr lnr-arrow-down'></span>"],
+        autoplayHoverPause: true,
+        autoplay: true,
         responsive: {
             0: {
                 items: 1
             },
-            480: {
-                items: 1,
-            },
             768: {
-                items: 2,
-            },
-            900: {
                 items: 3,
+            },
+            991: {
+                items: 4,
+            },
+            1024: {
+                items: 5,
             }
-
         }
     });
 
+    //------- Timer Countdown  js --------//  
 
+    if (document.getElementById("count")) {
 
+        var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
 
-    //  Start Google map 
+        // Update the count down every 1 second
+        var x = setInterval(function() {
 
-    // When the window has finished loading create our google map below
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now an the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="count"
+            document.getElementById("count").innerHTML =
+
+                "<div class='col'><span>" + days + "</span><br> Days " + "</div>" + "<div class='col'><span>" + hours + "</span><br> Hours " + "</div>" + "<div class='col'><span>" + minutes + "</span><br> Minutes " + "</div>" + "<div class='col'><span>" + seconds + "</span><br> Seconds </div>";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("count").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+
+    }
+
+    //------- Google Map  js --------//  
 
     if (document.getElementById("map")) {
-
         google.maps.event.addDomListener(window, 'load', init);
 
         function init() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
             var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
                 zoom: 11,
-
-                // The latitude and longitude to center the map (always required)
                 center: new google.maps.LatLng(40.6700, -73.9400), // New York
-
-                // How you would like to style the map. 
-                // This is where you would paste any style found on Snazzy Maps.
-                styles: [{ "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#e9e9e9" }, { "lightness": 17 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 20 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }]
+                styles: [{
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#e9e9e9"
+                    }, {
+                        "lightness": 17
+                    }]
+                }, {
+                    "featureType": "landscape",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#f5f5f5"
+                    }, {
+                        "lightness": 20
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#ffffff"
+                    }, {
+                        "lightness": 17
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{
+                        "color": "#ffffff"
+                    }, {
+                        "lightness": 29
+                    }, {
+                        "weight": 0.2
+                    }]
+                }, {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#ffffff"
+                    }, {
+                        "lightness": 18
+                    }]
+                }, {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#ffffff"
+                    }, {
+                        "lightness": 16
+                    }]
+                }, {
+                    "featureType": "poi",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#f5f5f5"
+                    }, {
+                        "lightness": 21
+                    }]
+                }, {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#dedede"
+                    }, {
+                        "lightness": 21
+                    }]
+                }, {
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{
+                        "visibility": "on"
+                    }, {
+                        "color": "#ffffff"
+                    }, {
+                        "lightness": 16
+                    }]
+                }, {
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "saturation": 36
+                    }, {
+                        "color": "#333333"
+                    }, {
+                        "lightness": 40
+                    }]
+                }, {
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "transit",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#f2f2f2"
+                    }, {
+                        "lightness": 19
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#fefefe"
+                    }, {
+                        "lightness": 20
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{
+                        "color": "#fefefe"
+                    }, {
+                        "lightness": 17
+                    }, {
+                        "weight": 1.2
+                    }]
+                }]
             };
-
-            // Get the HTML DOM element that will contain your map 
-            // We are using a div with id="map" seen below in the <body>
             var mapElement = document.getElementById('map');
-
-            // Create the Google Map using our element and options defined above
             var map = new google.maps.Map(mapElement, mapOptions);
-
-            // Let's also add a marker while we're at it
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(40.6700, -73.9400),
                 map: map,
@@ -392,16 +436,10 @@ $(document).ready(function () {
         }
     }
 
+    //------- Mailchimp js --------//  
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#mc_embed_signup').find('form').ajaxChimp();
     });
-
-
-
-
-
-
-
 
 });

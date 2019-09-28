@@ -34,11 +34,13 @@
 }
 body {
     color: $text-color;
-    font-family: $text-font;
-    font-size: 16px;
-    font-weight: 400;
+    font-family: $primary-font;
+    font-size: 14px;
+    font-weight: 300;
     line-height: 1.625em;
     position: relative;
+    // -webkit-font-smoothing: antialiased;
+    // -moz-osx-font-smoothing: grayscale;
 }
 ol, ul {
     margin: 0;
@@ -92,7 +94,7 @@ a, a:focus, a:hover {
 
 h1, h2, h3,
 h4, h5, h6 {
-    font-family: $title-font;
+    font-family: $primary-font;
     color: $title-color;
     line-height: 1.2em !important;
     margin-bottom: 0;
@@ -103,7 +105,7 @@ h4, h5, h6 {
 .h4, .h5, .h6 {
     margin-bottom: 0;
     margin-top: 0;
-    font-family: $title-font;
+    font-family: $primary-font;
     font-weight: 600;
     color: $title-color;
 }
