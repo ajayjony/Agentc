@@ -717,7 +717,7 @@
 	.single-brand{
 		text-align:center;
 		@include filter(grayscale, 100%);
-		opacity:.5;
+		opacity:1;
 		@include transition();
 		&:hover{
 			@include filter(grayscale, 0%);
